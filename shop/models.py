@@ -15,7 +15,7 @@ class UserProfile(models.Model):
     email_address = models.CharField(max_length=200, default='')
 
     def __str__(self):
-        return self.user
+        return self.user.username
 
     def create_profile(sender, **kwargs):
         if kwargs['created']:  # If User object has been created

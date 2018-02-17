@@ -41,7 +41,7 @@
                         <div class = "google-login">
                             <span>-- OR --</span>
                             <br/>
-                        <div><a href="https://developers.google.com/identity/protocols/OAuth2">Login with Google</a></div>
+                        <div><a href="{% url 'social:begin' 'google-oauth2' %}"><img src="{% static 'img/portfolio/google-sign-in.png'%}"></a></div>
                         </div>
                     </div>
                 </form>

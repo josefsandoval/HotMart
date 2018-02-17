@@ -64,10 +64,31 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social_django.context_processors.backends',# <- update context processors for OAuth
+                'social_django.context_processors.login_redirect',# update for OAuth
             ],
         },
     },
 ]
+
+
+# Authentication Backends
+# https://docs.djangoproject.com/en/2.0/topics/auth/customizing/
+AUTHENTICATION_BACKENDS = (
+    'social_core.backends.open_id.OpenIdAuth',  # for Google authentication
+    'social_core.backends.google.GoogleOpenId',  # for Google authentication
+    'social_core.backends.google.GoogleOAuth2',  # for Google authentication
+    'social_core.backends.github.GithubOAuth2',  # for Github authentication
+    'social_core.backends.google.GooglePlusAuth',
+    'social_core.backends.facebook.FacebookOAuth2',  # for Facebook authentication
+
+    'django.contrib.auth.backends.ModelBackend',
+)
+
+# Google+ API credentials
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '938060057296-pndaoc54mop8510ra2eekms0j7g15f7l.apps.googleusercontent.com'  # client ID
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'mIn1gi3zXgZu2vnDPjagtzWO'  # client secret
+
 
 WSGI_APPLICATION = 'onlinestore.wsgi.application'
 
@@ -120,5 +141,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+
+LOGIN_URL = 'login'
 
 LOGIN_REDIRECT_URL = '/shop/'
