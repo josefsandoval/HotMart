@@ -51,7 +51,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'onlinestore.urls'
+ROOT_URLCONF = 'hotmart.urls'
 
 TEMPLATES = [
     {
@@ -90,7 +90,7 @@ SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '938060057296-pndaoc54mop8510ra2eekms0j7g15f7l.a
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'mIn1gi3zXgZu2vnDPjagtzWO'  # client secret
 
 
-WSGI_APPLICATION = 'onlinestore.wsgi.application'
+WSGI_APPLICATION = 'hotmart.wsgi.application'
 
 
 # Database

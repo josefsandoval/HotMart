@@ -24,3 +24,42 @@ class UserProfile(models.Model):
 
     # connect to the post_save signal .connect(function, sender)
     post_save.connect(create_profile, sender=User)
+
+
+# to handle shopping categories
+class Category(models.Model):
+    name = models.CharField(max_length=250, default='')
+    slug = models.SlugField()
+    parent = models.ForeignKey('self', blank=True, null=True, related_name='children')
+
+    def __str__(self):
+        path = [self.name]
+
+        p = self.parent
+
+        while p is not None:
+            path.append(p.name)
+            p = p.parent
+
+        return '->'.join(path[::-1])
+
+
+    class Meta:
+        unique_together = ('slug', 'parent')
+        verbose_name = "category"
+        verbose_name_plural = "categories"
+
+
+class Item(models.Model):
+    name = models.CharField(max_length=250, default='')
+    category = models.ForeignKey('Category', null=True, blank=True)
+    price = models.IntegerField()
+    # in_stock = models.IntegerField()
+    description = models.CharField(max_length=1000, default='')
+
+    def __str__(self):
+        return self.name
+
+
+
+
