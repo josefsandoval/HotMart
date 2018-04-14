@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'social_django',
+    'mptt',
 ]
 
 MIDDLEWARE = [
@@ -142,6 +143,18 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+MEDIA_URL = '/static/img/'  # in address bar to display image on browser
+
+# where the Item images are going to be stored to
+MEDIA_ROOT = os.path.join(BASE_DIR, 'shop/static/img/')
+
+STATICFILES_DIRS = [
+                os.path.join(BASE_DIR,"static"),
+                ]
+STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR),"static_cdn")
+
 LOGIN_URL = 'login'
 
 LOGIN_REDIRECT_URL = '/shop/'
+
+MPTT_ADMIN_LEVEL_INDENT = 20
